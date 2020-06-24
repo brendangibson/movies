@@ -1,44 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie Searcher
 
-## Available Scripts
+To run:
+* Clone this repo
+* `npm install && npm run start`
 
-In the project directory, you can run:
+or
 
-### `npm start`
+[Go to this link](http://doordropping.com/fast/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To use the app, start typing in the search box. After a few letters you should see some movie boxart. Click on the boxarts to select/unselect the movies. You should see the cart icon on the top right show how many movies have been selected. Click on the cart icon to see a modal confirming the movie selections.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Extra Tasks
 
-### `npm test`
+If you have time and would like to add more
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Introduce testing to the application
 
-### `npm run build`
+Run `npm run test` to run the tests. I put in some tests for the `CartIcon` component, using [enzyme](https://airbnb.io/projects/enzyme/).
+- Use Typescript
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I used Typescript.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Use Redux
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I did not use Redux. Instead I used [recoil](https://recoiljs.org/) which is the new hotness and using it gave me some good experience as it looks like it will be widely used in the future.
 
-### `npm run eject`
+## Summary Questions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### What were the most difficult tasks?
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The most difficult tasks were getting the requests to the API working with `recoil`. I planned to cache the results to save on my allotment and to make the app faster. I did not work out a good way to do this with recoil and fell back to using the movie results straight from the request.  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Did you learn anything new while completing this assignment?
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I decided to use `recoil` and [tailwind](https://tailwindcss.com) for this exercise. I had given a presentation on `recoil` previously but had not used it extensively. I had heard a lot about `tailwind` and this was my first time using it. I like the developer experience with `recoil` which is much easier to use than `redux` and look forward to learning more about it. I also liked `tailwind` and I can see that it helps manage CSS complexity well. My concern with `tailwind` is that it may be a framework that makes the easy things easier and the hard things impossible.
 
-## Learn More
+### What did you not have time to add? What work took the up majority of your time?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I did not have time to add any animations or make the the styling professional. I did not spend much time dealing with the errors and edge cases like missing and inconsistently-sized boxart.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I did not add any handling of pagination. It looks like the default search returns 10 results. If I had time I would prefetch more results as the user scrolls down.
+
+The majority of my time was spent trying to get `recoil` to cache incoming data.
+
+### How could the application be improved?
+
+The application could be improved by adding loading animations and by improving the algorithm for the instant search. I would like an algorithm that shows the first results that come back initially and then only shows the latest results as the user types, but still making the requests for the results so that the results can be shown if the user stops typing. I have implemented this application before, in the real world, and that algorithm worked very well.
+
+It could also be improved by working out why it doesn't work in IE.
